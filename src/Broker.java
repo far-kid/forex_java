@@ -44,6 +44,7 @@ public class Broker {
     }
 
     //Buy currency
+    //REFORMAT THIS
     public void buyCurrency(int biweekIndex, int soldCurrencyIndex, double soldCurrencyAmount, int boughtCurrencyIndex) {
         //ADD ERROR
         System.out.println("Press 1 to buy when  bought currency amount is known");//CHANGE THE WORDING
