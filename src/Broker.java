@@ -67,6 +67,12 @@ public class Broker {
         player.setPortfolio(boughtCurrencyIndex , (player.getCurrValue(boughtCurrencyIndex)+boughtcurr));
 
         //reduce the soldcurr value
+
+
+        //after everything
+        player.addTransaction("A" , "A" ,0,0);//FORMAT TO CORRECT THINGY
+        player.displayPortfolio();
+        //IF POSSIBLE ADD BROKER TRANSACTION COST ETC
     }
 }
 

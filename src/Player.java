@@ -31,13 +31,21 @@ public class Player {
     }
 
     //Display the portfolio
-    public void displayPortfolio(){
+    public void displayPortfolio(Date date){
         /*
         * YOUR CURRENT PORTFOLIO  //#AS OF DATE(THE DATE IN THE SIM)
         * INR = XXXXX.XX
         * USD = XXXX.XX
         * EUR ETC*/
     }
+    public void displayPortfolio(){
+        /*
+         * YOUR CURRENT PORTFOLIO  //#AS OF DATE(THE DATE IN THE SIM)
+         * INR = XXXXX.XX
+         * USD = XXXX.XX
+         * EUR ETC*/
+    }
+
 
     //add transactions //CHECK of date
     public void addTransaction(String soldCurrency, String bCurrency, double soldAmount, double bAmount) {

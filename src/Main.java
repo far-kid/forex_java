@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -23,7 +24,8 @@ public class Main {
         System.out.println("Today's date is 1 January 2022!");
 
         for (int i = 0; i <24; i++) {
-            System.out.println("Today is :" +"date"); //add the date function
+            System.out.println("Today is :" +"date");//add the date function
+            player.displayPortfolio(new Date());//CHANGE THIS INTO PROPER SYNTAX
             while(true){
                 System.out.println("Press 1 to see your Portfolio");
                 System.out.println("Press 2 to see Current Currency Exchange Rates");
