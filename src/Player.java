@@ -21,13 +21,22 @@ public class Player {
 
     //get the value of individual currency holding
     public double getCurrValue(int index){
-        return portfolio[index];
+        try {//Added ArrayIndexOutOfBoundsException handling to both methods for array access
+            return portfolio[index];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Currency index out of bounds. Returning 0 as fallback.");
+            return 0;
+        }
     }
 
     //set value of individual currency holding
     //CAUTION IT DIRECTLY SETS THE VALUE NOT ADD/SUBTRACT
     public void setPortfolio(int index , double value) {
-        portfolio[index] = value;
+        try {//Added ArrayIndexOutOfBoundsException handling to both methods for array access
+            portfolio[index] = value;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Currency index out of bounds. Cannot set portfolio value.");
+        }
     }
 
     //Display the portfolio
