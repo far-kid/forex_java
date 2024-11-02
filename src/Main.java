@@ -1,19 +1,34 @@
 import java.util.Date;
 import java.util.Scanner;
+import java.util.InputMismatchException;//added this for error
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String playerName = null;
+        
         System.out.println("Hello Welcome to the Forex Simulator");
 
-        System.out.println("Enter the name of the Player:");
-        Scanner scanner = new Scanner(System.in);
-        String playerName = scanner.nextLine();
-
+        try {
+            System.out.println("Enter the name of the Player:");
+            playerName = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println("An error occurred while reading the player's name.");
+            return;
+        }
+        
         //init everything
         Player player = new Player(playerName);
         Broker broker = new Broker(player);
-        broker.populateExchangeRatesFromCSV("FILE PATH");
-
+            //added try catch block to chekc for error wrt externals files
+            
+            try {
+                broker.populateExchangeRatesFromCSV("FILE PATH");
+            } catch (Exception e) {//if the file path is incorrect, the file cannot be read, or some data in the file is problematic
+                System.out.println("Error populating exchange rates.");
+                 //e.printStackTrace();  UNCOMMENT THIS IF YOU WANT TO SEE THE STACK TRACE
+            }
+            //
         //
 
 
@@ -31,20 +46,26 @@ public class Main {
                 System.out.println("Press 2 to see Current Currency Exchange Rates");
                 System.out.println("Press 3 to BUY/Exchange Currency");
                 System.out.println("Press 4 to Continue to next week");
-                int input = scanner.nextInt();
-                if(input == 1){
-                    player.displayPortfolio();
-                }
-                if(input == 2){
-                    //BUILD THIS FUNCTION IN BROKER CLASS
-                }
-                if(input == 3){
-                    broker.buyCurrency(0,0,0,0);
-                }
-                if(input == 4){
-                    break;
+                 
+                try {
+                    int input = scanner.nextInt();
+                    if (input == 1) {
+                        player.displayPortfolio();
+                    } else if (input == 2) {
+                        // Placeholder for viewing exchange rates
+                    } else if (input == 3) {
+                        broker.buyCurrency(0, 0, 0, 0);
+                    } else if (input == 4) {
+                        break;
+                    } else {
+                        System.out.println("Please enter a valid option (1-4).");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input. Please enter a number.");
+                    scanner.nextLine(); // Clear invalid input
                 }
             }
         }
+        scanner.close();
     }
 }
